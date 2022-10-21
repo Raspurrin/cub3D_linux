@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_texture_names_2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:12:13 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:12:14 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:36:50 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ int	check_for_textures(t_list *node, t_map_c *tmp)
 {
 	if (!ft_strncmp(node->content, "NO ", 3))
 	{
-		tmp->no = &(node->content)[until_not_space(node->content)];
+		tmp->no = &(((char *)node->content))[until_not_space(node->content)];
 		return (0);
 	}
 	if (!ft_strncmp(node->content, "SO ", 3))
 	{
-		tmp->so = &(node->content)[until_not_space(node->content)];
+		tmp->so = &(((char *)node->content))[until_not_space(node->content)];
 		return (1);
 	}
 	if (!ft_strncmp(node->content, "WE ", 3))
 	{
-		tmp->we = &(node->content)[until_not_space(node->content)];
+		tmp->we = &(((char *)node->content))[until_not_space(node->content)];
 		return (2);
 	}
 	if (!ft_strncmp(node->content, "EA ", 3))
 	{
-		tmp->ea = &(node->content)[until_not_space(node->content)];
+		tmp->ea = &(((char *)node->content))[until_not_space(node->content)];
 		return (3);
 	}
 	return (-1);
@@ -58,12 +58,12 @@ int	check_for_convention(t_list *node, t_map_c *tmp)
 		return (ret);
 	if (!ft_strncmp(node->content, "F ", 2))
 	{
-		tmp->floor = &(node->content)[until_not_space(node->content)];
+		tmp->floor = &(((char *)node->content))[until_not_space(node->content)];
 		return (4);
 	}
 	if (!ft_strncmp(node->content, "C ", 2))
 	{
-		tmp->ceiling = &(node->content)[until_not_space(node->content)];
+		tmp->ceiling = &(((char *)node->content))[until_not_space(node->content)];
 		return (5);
 	}
 	if (!ft_strncmp(node->content, "\0\0", 2))

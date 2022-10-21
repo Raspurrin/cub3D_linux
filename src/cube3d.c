@@ -3,15 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:07:01 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/21 12:00:27 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:11:30 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+#ifdef __linux__
+static void	control_hooks(t_data *data)
+{
+	long	x;
+	long	y;
+
+	x = SCREEN_WIDTH / 2;
+	y = SCREEN_HEIGHT / 2;
+	mlx_hook(data->mlx.win, 2, (1L<<0), player_action, data); // keydown
+	mlx_hook(data->mlx.win, 3, (1L<<1), player_stop_movement, data); //keyup 
+	mlx_hook(data->mlx.win, 17, 0L, red_x_win, data);
+	mlx_hook(data->mlx.win, 6, (1L << 6), player_mouse_action, data);
+	mlx_mouse_move(data->mlx.ptr, data->mlx.win, x, y);
+	mlx_mouse_hide(data->mlx.ptr, data->mlx.win);
+}
+#elif __APPLE__
 static void	control_hooks(t_data *data)
 {
 	long	x;
@@ -26,6 +42,7 @@ static void	control_hooks(t_data *data)
 	mlx_mouse_move(data->mlx.win, (void *)x, y, 0);
 	mlx_mouse_hide(data->mlx.win, 0);
 }
+#endif
 
 int	main(int argc, char **argv)
 {

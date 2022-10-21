@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_sprites.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:04:23 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:04:24 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:32:34 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static t_entity	*set_entities(double sf, t_list **file, int img_ct)
 		entity[i].id = ft_atoi(row->content);
 		if (img_ct <= entity[i].id)
 			entity[i].anim_info = 1;
-		info = ft_split(&row->content[(entity[i].id / 10) + 2], ',');
+		info = ft_split(&((char*) row->content)[(entity[i].id / 10) + 2], ',');
 		entity[i].position.x = ft_atoi(info[0]);
 		entity[i].position.y = ft_atoi(info[1]);
 		entity[i].scale = ft_atoi(info[2]) * sf;

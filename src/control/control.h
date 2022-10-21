@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:04:28 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:17:09 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 20:43:01 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,42 @@ typedef struct s_map		t_map;
 typedef struct s_textures	t_textures;
 typedef struct s_video		t_video;
 typedef struct s_mlx		t_mlx;
+
+# if __linux__
+#  define W 119
+#  define W2 119
+#  define A 97
+#  define S 115
+#  define S2 115
+#  define D 100
+#  define P 112
+#  define TAB 65289
+#  define ESC 65307
+#  define SPACE 32
+#  define E 101
+#  define LEFT 65361
+#  define RIGHT 65363
+#  define AUDIO "/usr/bin/aplay"
+#  define PLAY "aplay"
+
+# elif __APPLE__
+#  define W 13
+#  define W2 126
+#  define A 0
+#  define S 1
+#  define S2 125
+#  define D 2
+#  define P 35
+#  define TAB 48
+#  define ESC 53
+#  define SPACE 49
+#  define E 14
+#  define LEFT 123
+#  define RIGHT 124
+#  define AUDIO "/usr/bin/afplay", "--volume", "1"
+#  define PLAY "afplay"
+#
+# endif
 
 int		player_action(int keycode, t_data *data);
 int		red_x_win(t_data *data);

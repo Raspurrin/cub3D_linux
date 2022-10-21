@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_sprite_ini.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:04:15 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:04:16 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:34:07 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	validate_name_ends(t_list **file)
 	while (ft_strncmp(row->content, "\0\0", 2) && row)
 	{
 		len = ft_strlen(row->content);
-		if (len < 5 || ft_strncmp(&row->content[len - 4], ".xpm\0", 5))
+		if (len < 5 || ft_strncmp(&((char*)row->content)[len - 4], ".xpm\0", 5))
 			return (0);
 		row = row->next;
 		i++;

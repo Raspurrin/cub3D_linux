@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   len_func.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:06:18 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:06:19 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:41:04 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int	*line_lengths(char **map)
 {
 	int	*arr;
 	int	i;
-	int	i2;
 
 	i = 0;
-	i2 = 0;
 	while (map[i])
 		i++;
 	arr = ft_calloc(i + 1, sizeof(int));
