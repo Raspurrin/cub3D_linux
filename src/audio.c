@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   audio.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:06:52 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:18:59 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 20:43:09 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 #ifdef BONUS
 
-void	play_audio(char *audio, int loudness)
+void	play_audio(char *audioo, int loudness)
 {
 	int		pid;
 	char	**argv;
+	(void)loudness;
 
-	argv = ft_calloc(5, sizeof(char *));
-	argv[0] = ft_strdup("afplay");
-	argv[1] = ft_strdup("-v");
-	argv[2] = ft_itoa(loudness);
-	argv[3] = ft_strdup(audio);
+	argv = ft_calloc(3, sizeof(char *));
+	argv[0] = ft_strdup(AUDIO);
+	argv[1] = ft_strdup(audioo);
+	argv[2] = NULL;
+	// argv[1] = ft_strdup("-v");
+	// argv[2] = ft_itoa(loudness);
+	
 	pid = fork();
 	if (!pid)
 	{
-		execve("/usr/bin/afplay", argv, NULL);
+		execve(AUDIO, argv, NULL);
 		exit(0);
 	}
 	free(argv[0]);
 	free(argv[1]);
 	free(argv[2]);
-	free(argv[3]);
+	// free(argv[3]);
 	free(argv);
 }
 
@@ -44,7 +47,7 @@ void	end_audio(void)
 
 	argv = ft_calloc(3, sizeof(char *));
 	argv[0] = ft_strdup("killall");
-	argv[1] = ft_strdup("afplay");
+	argv[1] = ft_strdup(PLAY);
 	pid = fork();
 	if (!pid)
 	{

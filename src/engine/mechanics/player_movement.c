@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmeixner <konstantin.meixner@freenet.de    +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:05:45 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/21 12:37:22 by kmeixner         ###   ########.fr       */
+/*   Updated: 2022/10/20 20:55:49 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	dash(t_data *data)
 
 	if (data->keys.key_space[0] == 1 && data->keys.key_space[1] == 0)
 	{
-		play_audio("./audio/jump.mp3", 1);
+		play_audio("./audio/jump.wav", 1);
 		data->keys.key_space[1] = 1;
 		data->player.dash_cooldown = 30 * data->util.move_factor
 			/ MOVE_DISTANCE;

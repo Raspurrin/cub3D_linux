@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:04:58 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:04:59 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:38:51 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static int	get_texture_x_door(t_data *data, t_texture texture,
 	door = data->map.doormap[y][x];
 	if (raycast->cardinal_direction == 1 || raycast->cardinal_direction == 2)
 		d_x = fmod(raycast->impact.x, TILE_SIZE);
-	if (raycast->cardinal_direction == 3 || raycast->cardinal_direction == 4)
+	else if (raycast->cardinal_direction == 3 || raycast->cardinal_direction == 4)
 		d_x = fmod(raycast->impact.y, TILE_SIZE);
+	else
+		d_x = 0;
 	d_x += (100 - door.closed_percentage);
 	d_x *= (double)(texture.width - 1) / 100;
 	return ((int)floor(d_x));
@@ -58,12 +60,14 @@ static int	get_texture_x(t_data *data, t_texture texture, t_raycast *raycast)
 		return (get_texture_x_door(data, texture, raycast));
 	if (raycast->cardinal_direction == 1)
 		d_x = fmod(raycast->impact.x, TILE_SIZE);
-	if (raycast->cardinal_direction == 2)
+	else if (raycast->cardinal_direction == 2)
 		d_x = TILE_SIZE - fmod(raycast->impact.x, TILE_SIZE);
-	if (raycast->cardinal_direction == 3)
+	else if (raycast->cardinal_direction == 3)
 		d_x = fmod(raycast->impact.y, TILE_SIZE);
-	if (raycast->cardinal_direction == 4)
+	else if (raycast->cardinal_direction == 4)
 		d_x = TILE_SIZE - fmod(raycast->impact.y, TILE_SIZE);
+	else
+		d_x = 0;
 	d_x *= (double)(texture.width - 1) / 100;
 	return ((int)floor(d_x));
 }

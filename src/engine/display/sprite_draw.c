@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_draw.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:05:32 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:05:33 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:40:16 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	*next_highest(t_draw_sprite *layer, double *last_dist)
 	void		*ptr;
 	int			i;
 
+	ptr = NULL;
 	i = 0;
 	tmpdist = -1.0;
 	while (i < layer->obj_count)

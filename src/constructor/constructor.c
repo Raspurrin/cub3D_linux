@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constructor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmeixner <konstantin.meixner@freenet.de    +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:02:58 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/21 11:28:40 by kmeixner         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:26:31 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ static t_player	set_player(char **bit_map, int tile_size)
 	player.pos.x = (player.pos.x * tile_size) + (tile_size / 2);
 	player.pos.y = (player.pos.y * tile_size) + (tile_size / 2);
 	player.vect = set_player_vector(bit_map, "NEWS");
+	player.dash_cooldown = 0;
+	player.movement.x = 0;
+	player.movement.y = 0;
 	return (player);
 }
 

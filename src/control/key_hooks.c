@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emomkus <emomkus@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:04:31 by emomkus           #+#    #+#             */
-/*   Updated: 2022/06/20 23:13:56 by emomkus          ###   ########.fr       */
+/*   Updated: 2022/10/20 20:25:22 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static void	*get_action_function(int keycode, t_data *data)
 {
-	if (keycode == 0)
+	if (keycode == A)
 		data->keys.key_a[0] = 1;
-	if (keycode == 2)
+	if (keycode == D)
 		data->keys.key_d[0] = 1;
-	if (keycode == 1 || keycode == 125)
+	if (keycode == S || keycode == S2)
 		data->keys.key_s[0] = 1;
-	if (keycode == 13 || keycode == 126)
+	if (keycode == W || keycode == W2)
 		data->keys.key_w[0] = 1;
-	if (keycode == 14)
+	if (keycode == E)
 		return (&toggle_door);
-	if (keycode == 49)
+	if (keycode == SPACE)
 		data->keys.key_space[0] = 1;
-	if (keycode == 123)
+	if (keycode == LEFT)
 		return (&rotate_player_left);
-	if (keycode == 124)
+	if (keycode == RIGHT)
 		return (&rotate_player_right);
-	if (keycode == 48)
+	if (keycode == TAB)
 		return (&pop_minimap);
-	if (keycode == 35)
+	if (keycode == P)
 		return (&menu_pop);
-	if (keycode == 53)
+	if (keycode == ESC)
 		return (&close_win);
 	return (NULL);
 }
@@ -54,15 +54,15 @@ int	player_action(int keycode, t_data *data)
 */
 int	player_stop_movement(int keycode, t_data *data)
 {
-	if (keycode == 0)
+	if (keycode == A)
 		data->keys.key_a[0] = 0;
-	if (keycode == 2)
+	if (keycode == D)
 		data->keys.key_d[0] = 0;
-	if (keycode == 1 || keycode == 125)
+	if (keycode == S || keycode == S2)
 		data->keys.key_s[0] = 0;
-	if (keycode == 13 || keycode == 126)
+	if (keycode == W || keycode == W2)
 		data->keys.key_w[0] = 0;
-	if (keycode == 49)
+	if (keycode == SPACE)
 	{
 		data->keys.key_space[1] = 0;
 		data->keys.key_space[0] = 0;
@@ -79,7 +79,7 @@ int	player_mouse_action(int x, int y, t_data *data)
 	mouse_y = SCREEN_HEIGHT / 2;
 	y++;
 	rotate_player(data, x - mouse_x);
-	mlx_mouse_move(data->mlx.win, (void *)mouse_x, mouse_y, 0);
+	mlx_mouse_move(data->mlx.ptr, data->mlx.win, mouse_x, mouse_y);
 	return (0);
 }
 
